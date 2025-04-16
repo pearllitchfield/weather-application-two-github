@@ -94,7 +94,7 @@ function displayForecast(response) {
 }
 
 let forecast = document.querySelector("#forecast");
-forecastElement.innerHTML = forecastHtml;
+forecast.innerHTML = forecastHtml;
 
 let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", handleSearchSubmit);
