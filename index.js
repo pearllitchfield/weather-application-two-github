@@ -63,14 +63,14 @@ function formatDay(timestamp) {
 function getForecast(city) {
   let apiKey = "7da7782c88c36f93atbb1b04a1aebo6b";
   let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(displayForecast);
+  axios(apiUrl).then(displayForecast);
 }
 
 function displayForecast(response) {
   let forecastHtml = "";
 
   response.data.daily.forEach(function (day, index) {
-    if (index < 5)
+    if (index < 5) {
       forecastHtml =
         forecastHtml +
         `
@@ -88,13 +88,13 @@ function displayForecast(response) {
                 day.temperature.minimum
               )}°</div>
             </div>
-          </div>
-          `;
+          </div>`;
+    }
   });
-}
 
-let forecast = document.querySelector("#forecast");
-forecast.innerHTML = forecastHtml;
+  let forecastElement = document.querySelector("#forecast");
+  forecastElement.innerHTML = forecastHtml;
+}
 
 let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", handleSearchSubmit);
